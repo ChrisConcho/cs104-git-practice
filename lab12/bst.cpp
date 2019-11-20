@@ -20,7 +20,11 @@ bool isBST(Node *root) {
     else if (isBST(root->left)){
         
         if (root->left == nullptr || root->left->key < root->key){
-            flag += 1;
+            if ( root->left-left == nullptr ||root->left->left->key){
+                if ( root->left->right == nullptr || root->left->right->key < root->key){
+                        flag += 1;
+                }
+            }
         }
         else{
             return false;
@@ -28,7 +32,11 @@ bool isBST(Node *root) {
     }
     else if (isBST(root->right)){
         if(root->right == nullptr || root->right->key > root->key){
-            flag += 1;
+            if ( root->right-left == nullptr ||root->right->left->key){
+                if ( root->right->right == nullptr || root->right->right->key > root->key){
+                        flag += 1;
+                }
+            }
         }
         else{
             return false;
