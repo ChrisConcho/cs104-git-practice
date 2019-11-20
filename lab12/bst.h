@@ -25,4 +25,5 @@ public:
 bool isBST(Node *root);
 bool isBalanced(Node *root);
 int helper(Node* check, int x);
+bool bsthelper(Node* check , Node* root, int x);
 #endif

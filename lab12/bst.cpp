@@ -19,24 +19,16 @@ bool isBST(Node *root) {
     }
     else if (isBST(root->left)){
         
-        if (root->left == nullptr || root->left->key < root->key){
-            if ( root->left-left == nullptr ||root->left->left->key< root->key){
-                if ( root->left->right == nullptr || root->left->right->key < root->key){
-                        flag += 1;
-                }
-            }
+        if (root->left == nullptr || bsthelper(root->left,root,1)){
+            flag += 1;
         }
         else{
             return false;
-            }
+        }
     }
     else if (isBST(root->right)){
-        if(root->right == nullptr || root->right->key > root->key){
-            if ( root->right-left == nullptr ||root->right->left->key > root->key){
-                if ( root->right->right == nullptr || root->right->right->key > root->key){
-                        flag += 1;
-                }
-            }
+        if(root->right == nullptr ||bsthelper(root->right,root,0)){
+            flag += 1;
         }
         else{
             return false;
@@ -46,6 +38,37 @@ bool isBST(Node *root) {
         return true;
     }
     return false;
+}
+bool bsthelper(Node* check,Node* root, int x){
+    if (check == nullptr){
+        return true;
+    }
+    else if (x ==1){
+        if ( check->key < root->key){
+            if (bsthelper(check->left, root, 1) && bsthelper(check->right, root, 1)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        if( check->key > root->key){
+            if(bsthelper(check->right,root, 0) && bsthelper(check->left,root,0)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
 }
     
 //Helper functions?
