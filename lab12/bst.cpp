@@ -71,4 +71,5 @@ int helper(Node* check, int x){
                 return right;
             }
         }
+    }
 }
